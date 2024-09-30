@@ -3,8 +3,6 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
 
-NULLABLE = {'blank': True, 'null': True}
-
 
 class CustomUserManager(UserManager):
     def create_superuser(self, email=None, password=None, **extra_fields):
