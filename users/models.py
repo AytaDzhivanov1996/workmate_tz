@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import UserManager, AbstractUser
 
@@ -18,7 +17,7 @@ class CustomUserManager(UserManager):
 
     def _create_user(self, email, password=None, **extra_fields):
         if not email:
-            raise ValueError(_('The Email must be set'))
+            raise ValueError('The Email must be set')
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.password = make_password(password)
