@@ -34,6 +34,7 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(verbose_name='Почта', unique=True)
+    name = models.CharField(max_length=128)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
