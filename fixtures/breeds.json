@@ -1,0 +1,23 @@
+[
+    {
+        "model": "kittens.breed",
+        "pk": 1,
+        "fields": {
+            "name": "Бенгальская"
+        }
+    },
+    {
+        "model": "kittens.breed",
+        "pk": 2,
+        "fields": {
+            "name": "Сиамская"
+        }
+    },
+    {
+        "model": "kittens.breed",
+        "pk": 3,
+        "fields": {
+            "name": "Персидская"
+        }
+    }
+]

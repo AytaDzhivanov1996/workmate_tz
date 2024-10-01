@@ -1,0 +1,38 @@
+[
+    {
+        "model": "your_app_name.kitten",
+        "pk": 1,
+        "fields": {
+            "name": "Simba",
+            "color": "black",
+            "age": 3,
+            "description": "A playful Bengal kitten",
+            "breed": 1,
+            "owner": 2
+        }
+    },
+    {
+        "model": "your_app_name.kitten",
+        "pk": 2,
+        "fields": {
+            "name": "Luna",
+            "color": "white",
+            "age": 5,
+            "description": "A calm Siamese kitten",
+            "breed": 2,
+            "owner": 2
+        }
+    },
+    {
+        "model": "your_app_name.kitten",
+        "pk": 3,
+        "fields": {
+            "name": "Milo",
+            "color": "gray",
+            "age": 7,
+            "description": "A fluffy Persian kitten",
+            "breed": 3,
+            "owner": 1
+        }
+    }
+]
