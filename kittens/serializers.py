@@ -10,7 +10,6 @@ class BreedSerializer(serializers.ModelSerializer):
 
 class KittenSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.email')
-    breed = BreedSerializer()
     average_rating = serializers.SerializerMethodField()
 
     class Meta:
