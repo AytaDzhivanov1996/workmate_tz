@@ -1,10 +1,10 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.decorators import action
+from rest_framework.exceptions import ValidationError
 
-from kittens.models import Breed, Kitten
-from kittens.serializers import BreedSerializer, KittenSerializer
+from kittens.models import Breed, Kitten, Rating
+from kittens.serializers import BreedSerializer, KittenSerializer, RatingSerializer
 
 
 class BreedViewSet(viewsets.ReadOnlyModelViewSet):
@@ -38,3 +38,23 @@ class KittenViewSet(viewsets.ModelViewSet):
         if instance.owner != self.request.user:
             raise PermissionError('You cannot delete this kitten')
         instance.delete()
+
+
+class RatingViewSet(viewsets.ModelViewSet):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+    def create(self, request, *args, **kwargs):
+        kitten_id = request.data.get('kitten')
+        if Rating.objects.filter(kitten_id=kitten_id, user=request.user).exists():
+            raise ValidationError('You have already rated this kitten.')
+        return super().create(request, *args, **kwargs)
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+    
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if instance.user != request.user:
+            raise ValidationError('You cannot update this rating.')
+        return super().update(request, *args, **kwargs)
