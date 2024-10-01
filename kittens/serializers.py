@@ -8,7 +8,7 @@ class BreedSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class KittenSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.name')
+    owner = serializers.ReadOnlyField(source='owner.email')
 
     class Meta:
         model = Kitten
